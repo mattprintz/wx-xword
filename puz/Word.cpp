@@ -81,10 +81,10 @@ public:
     {
         if (square->IsBetween(m_front, m_back))
         {
-            int x = abs(square->GetCol() - m_front->GetCol());
+            int x = std::abs(square->GetCol() - m_front->GetCol());
             if (x > 0)
                 return x;
-            return abs(square->GetRow() - m_front->GetRow());
+            return std::abs(square->GetRow() - m_front->GetRow());
         }
         return -1;
     }

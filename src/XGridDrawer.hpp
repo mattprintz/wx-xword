@@ -22,7 +22,9 @@
 
 // For compilers that don't support precompilation, include "wx/wx.h"
 #include <wx/wxprec.h>
- 
+#include <wx/wx.h>
+#include <wx/dc.h>
+
 #ifndef WX_PRECOMP
 #    include <wx/wx.h>
 #endif

@@ -24,6 +24,7 @@
 #include "utils/timeit.hpp"
 #include "wx/graphics.h"
 #include <wx/mstream.h>
+#include <wx/dc.h>
 #include "utils/color.hpp" // GetBrightness
 
 #define XWORD_USE_GC 0

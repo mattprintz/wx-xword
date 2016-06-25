@@ -124,5 +124,5 @@ int MyHtmlDCRenderer::GetTotalWidth()
 
 // This hack forces the linker to always link in m_* files
 // (wxHTML doesn't work without handlers from these files)
-#include "wx/html/forcelnk.h"
-FORCE_WXHTML_MODULES()
+//#include "wx/html/forcelnk.h"
+//FORCE_WXHTML_MODULES()

@@ -21,6 +21,8 @@
 #include "Checksummer.hpp"
 #include "puzstring.hpp"
 #include "utils/streamwrapper.hpp"
+#include <stdlib.h>
+#include <string.h>
 #include <iostream>
 #include <fstream>
 #include <sstream>

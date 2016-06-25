@@ -21,6 +21,7 @@
 #include "Clue.hpp"
 #include "puzstring.hpp"
 #include "utils/minizip.hpp"
+#include <string.h>
 #include <sstream>
 #include "parse/base64.hpp"
 

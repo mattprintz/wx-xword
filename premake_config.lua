@@ -12,6 +12,14 @@ newoption {
     description = "Custom wxWidgets directory"
 }
 
+local function outputof(cmd)
+    local cmdStream = assert(io.popen(cmd))
+    local cmdOutput = assert(cmdStream:read("*a"))
+    cmdStream:close()
+    return cmdOutput;
+end
+os.outputof = outputof
+
 if not os.is("windows") then
 newoption {
 	trigger = "wx-config",

@@ -23,6 +23,7 @@
 #ifndef WX_PRECOMP
 #    include <wx/frame.h>
 #endif
+#include <wx/containr.h>
 
 
 // XWord library
@@ -69,7 +70,7 @@ class ConfigManager;
 // The XWord frame class
 //------------------------------------------------------------------------------
 
-class MyFrame : public wxFrame
+class MyFrame : public wxFrame, public wxControlContainer
 {
     friend class PreferencesDialog;
     friend class MyPrintout;

@@ -18,7 +18,7 @@
 
 #include "SizedText.hpp"
 
-BEGIN_EVENT_TABLE(SizedText, wxStaticText)
+BEGIN_EVENT_TABLE(SizedText, wxControl)
     EVT_SIZE        (SizedText::OnSize)
     EVT_PAINT       (SizedText::OnPaint)
 END_EVENT_TABLE()

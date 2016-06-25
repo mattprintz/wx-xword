@@ -17,6 +17,7 @@
 
 #include <wx/wxprec.h>
 #include "fontface.hpp"
+#include "../MyFrame.hpp"
 #include <wx/fontenum.h>
 #include <wx/textctrl.h>
 #include <wx/thread.h>
@@ -99,7 +100,11 @@ void FontFaceCtrl::SetValue(const wxString & value)
     evt.SetEventObject(this);
     evt.SetId(selection);
     evt.SetString(m_lastFaceName);
-    ProcessCommand(evt);
+    // TODO mbp: Figure out how this
+//    ProcessCommand(evt);
+//    MyFrame * frame = wxDynamicCast(GetParent(), MyFrame);
+//    frame->ProcessCommand(evt);
+//    (MyFrame *)wxluaT_getuserdatatype(L, 1, wxluatype_MyFrame).ProcessCommand(evt);
 }
 
 

@@ -24,6 +24,7 @@
 #include "App.hpp"
 #include <wx/print.h>
 #include <wx/printdlg.h>
+#include <wx/containr.h>
 #include "printout.hpp"
 
 // Puz library
@@ -2791,7 +2792,9 @@ MyFrame::OnClose(wxCloseEvent & evt)
             (*it)->Hide();
 
         // cleanup xword package
+#ifdef XWORD_USE_LUA
         wxGetApp().GetwxLuaState().RunFile(GetScriptsDir() + "/xword/cleanup.lua");
+#endif
 
         // Close the clipboard
         if (wxTheClipboard->Open())

@@ -18,6 +18,7 @@
 
 #include "Square.hpp"
 #include "Grid.hpp"
+#include <wctype.h>
 
 //#define PUZ_CHECK_STRINGS
 

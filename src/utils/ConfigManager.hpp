@@ -25,6 +25,7 @@
 #include <set>
 #include <algorithm>
 #include <wx/event.h> // wxEvtHandler
+#include <wctype.h>
 
 
 
@@ -155,7 +156,7 @@ public:
 
     void SetConfig(wxConfigBase * cfg)
     {
-        wxASSERT_MSG(! m_isDummy, "ConfigManager already has a dummy wxMemory Config");
+        wxASSERT_MSG(! m_isDummy, _T("ConfigManager already has a dummy wxMemory Config"));
         m_config = cfg;
         // If we have ConfigLists, update their values.
         m_group.UpdateLists();

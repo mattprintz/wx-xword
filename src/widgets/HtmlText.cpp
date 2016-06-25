@@ -29,8 +29,8 @@
 #include <wx/tooltip.h>
 
 // this hack forces the linker to always link in m_* files
-#include <wx/html/forcelnk.h>
-FORCE_WXHTML_MODULES()
+//#include <wx/html/forcelnk.h>
+//FORCE_WXHTML_MODULES()
 
 
 IMPLEMENT_DYNAMIC_CLASS(HtmlText, wxControl)
