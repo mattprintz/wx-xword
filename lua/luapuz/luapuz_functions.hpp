@@ -7,7 +7,8 @@ extern "C" {
 #include <lualib.h>
 }
 
-#include <string>
+#include <stdlib.h>
+#include <string.h>
 #include <iostream>
 #include "puz/exceptions.hpp"
 #include "puz/puzstring.hpp"

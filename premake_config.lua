@@ -12,13 +12,16 @@ newoption {
     description = "Custom wxWidgets directory"
 }
 
-local function outputof(cmd)
-    local cmdStream = assert(io.popen(cmd))
-    local cmdOutput = assert(cmdStream:read("*a"))
-    cmdStream:close()
-    return cmdOutput;
+-- Hack to make add os.outputof in since it's not in all versions
+if os.outputof == nil then
+    local function outputof(cmd)
+        local cmdStream = assert(io.popen(cmd))
+        local cmdOutput = assert(cmdStream:read("*a"))
+        cmdStream:close()
+        return cmdOutput;
+    end
+	os.outputof = outputof
 end
-os.outputof = outputof
 
 if not os.is("windows") then
 newoption {
@@ -83,6 +86,10 @@ local function get_wx_config(directories, use_system_wide_config)
 		local build = cmd(config .. ' --list')
 		local debug = build:match("debug")
 		local release = build:match("release")
+        if version:match("^3") == "3" then
+            debug=true
+            release=true
+        end
 		if not (version and debug or release) then return end
 		-- Check against previous versions
 		function add_if_newer(build)
@@ -164,6 +171,7 @@ elseif not (_OPTIONS["wx-config-debug"] and _OPTIONS["wx-config-release"]) then
 		-- Then search for wxWidgets under whatever paths could make sense
 		else
 			local paths = {
+                './',
 				'/Developer',
 			}
 			-- Compile a list of folders beginning with wx
@@ -226,7 +234,7 @@ end
 function get_configurations()
 	if not os.is("windows") then
 		-- Check wx-config
-		if not (_OPTIONS["wx-config-debug"] or _OPTIONS["wx-config-release"]) then
+		if not _OPTIONS["wx-config"] and not (_OPTIONS["wx-config-debug"] or _OPTIONS["wx-config-release"]) then
 			print("Unable to find wx-config on this system.")
 			error()
 		end

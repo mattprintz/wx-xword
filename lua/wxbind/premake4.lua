@@ -6,11 +6,26 @@ local function wxbindproject(name)
         files { "src/wx"..name.."*", "include/wx"..name.."*" }
 
         defines { "_LIB" }
-        includedirs { "setup", "../lua/include", "..",  }
+        includedirs { "setup",
+            "../lua/include",
+            "..",
+--            "../../deps/luajit/include",
+        }
         files { "src/dummy.cpp" }
 
-        configuration "Debug"   targetdir "../../lib/Debug"
-        configuration "Release" targetdir "../../lib/Release"
+        configuration "Debug"   targetdir "../../build/lib/Debug"
+        configuration "Release" targetdir "../../build/lib/Release"
+
+        configuration "linux"
+            includedirs {
+                "../lua/include",
+                "..",
+                "../setup",
+                "/usr/include/lua5.1"
+            }
+            defines { "LUA_USE_LINUX" }
+--          defines { "LUA_USE_LINUX", "LUA_COMPAT_MODULE" }
+            links { "dl", "lua5.1" }
 
         -- Disable some warnings
         configuration "vs*"

@@ -23,7 +23,6 @@ project "XWord"
     -- --------------------------------------------------------------------
 
     dofile "../premake4_wxdefs.lua"
-    dofile "../premake4_wxlibs.lua"
 
     -- --------------------------------------------------------------------
     -- puz
@@ -59,17 +58,23 @@ project "XWord"
 
     if not _OPTIONS["disable-lua"] then
         configuration {}
-            defines "XWORD_USE_LUA"
+            defines {
+                "XWORD_USE_LUA",
+            	"LUAPUZ_API=\"\""
+            }
     
             includedirs {
                 "../lua",
                 "../lua/wxbind/setup",
+                "/usr/include/lua5.1",
             }
 
-            libdirs { }
+            libdirs {
+                "/usr/lib/x86_64-linux-gnu/"
+            }
     
             links {
-                "lua51",
+                "lua5.1",
                 "wxlua",
                 "wxbindbase",
                 "wxbindcore",
@@ -110,6 +115,8 @@ project "XWord"
         configuration {}
             excludes { "xwordbind/*" }
     end
+
+    dofile "../premake4_wxlibs.lua"
 
     -- --------------------------------------------------------------------
     -- Resources

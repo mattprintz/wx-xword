@@ -2,7 +2,7 @@
 #define LUAPUZ_TRACKING_H
 
 extern "C" {
-#include "lua.h"
+#include <lua.h>
 }
 
 void luapuz_registerTable(lua_State * L, const char * name);

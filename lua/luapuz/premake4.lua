@@ -11,8 +11,8 @@ project "luapuz"
     -- Common lua stuff
     dofile "../premake4_lualib.lua"
 
-    configuration "Debug"   targetdir "../../bin/Debug"
-    configuration "Release" targetdir "../../bin/Release"
+    configuration "Debug"   targetdir "../../build/bin/Debug"
+    configuration "Release" targetdir "../../build/bin/Release"
     configuration {}
 
     includedirs { "../.." }
@@ -34,8 +34,14 @@ project "luapuz"
 
 
     configuration "linux"
-        defines { [[PUZ_API=""]] }
-        links { "dl" }
+        includedirs { "/usr/include/lua5.1" }
+        defines {
+            "LUA_USE_LINUX",
+            "LUA_COMPAT_MODULE",
+            "PUZ_API=\"\"",
+            "LUAPUZ_API=\"\""
+        }
+        links { "dl", "lua5.1" }
 
 	configuration "macosx"
     	defines {

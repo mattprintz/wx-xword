@@ -17,10 +17,10 @@ solution "XWord"
 
     -- Output for compiled files
     configuration "Debug"
-        targetdir "bin/Debug"
+        targetdir "build/bin/Debug"
 
     configuration "Release"
-        targetdir "bin/Release"
+        targetdir "build/bin/Release"
 
     -- --------------------------------------------------------------------
     -- Debug / Release
@@ -28,14 +28,14 @@ solution "XWord"
     configuration "Release"
         defines { "NDEBUG" }
         flags { "Optimize" }
-        libdirs { "bin/Release", "lib/Release" }
+        libdirs { "build/bin/Release", "build/lib/Release" }
     configuration { "macoxs", "Release" }
     	linkoptions "-S" -- Strip debug symbols
 
     configuration "Debug"
         defines { "DEBUG", "_DEBUG" }
         flags { "Symbols" }
-        libdirs { "bin/Debug", "lib/Debug" }
+        libdirs { "build/bin/Debug", "build/lib/Debug" }
 
     -- --------------------------------------------------------------------
     -- Platform-specific
@@ -45,6 +45,16 @@ solution "XWord"
 
     configuration "macoxs"
         platforms { "native", "x32", "x64" }
+
+    configuration "linux"
+        platforms { "native", "x32", "x64" }
+
+    -- ------------------------------------------------------------------------
+    -- General
+    -- ------------------------------------------------------------------------
+
+    configuration "vs*"
+        defines { "VISUAL_STUDIO" }
 
     -- ------------------------------------------------------------------------
     -- General

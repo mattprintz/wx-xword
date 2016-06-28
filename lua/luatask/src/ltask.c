@@ -6,7 +6,9 @@
 ** Copyright (C) 2003-2007 Daniel Quintela.  All rights reserved.
 */
 
-#include <vld.h>
+#ifdef VISUAL_STUDIO
+    #include <vld.h>
+#endif
 
 #include <lauxlib.h>
 #include <lua.h>

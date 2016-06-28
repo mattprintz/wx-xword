@@ -1,17 +1,16 @@
 -- Common setup for lua shared libs
 
 configuration "Debug"
-    targetdir "../bin/Debug/scripts/libs"
+    targetdir "../build/bin/Debug/scripts/libs"
 configuration "Release"
-    targetdir "../bin/Release/scripts/libs"
+    targetdir "../build/bin/Release/scripts/libs"
 configuration {}
 
 
 -- lua
-includedirs { "../deps/luajit/include" }
 defines { "LUA_LIB" }
-libdirs { "../deps/luajit/lib" }
-links { "lua51" }
+-- libdirs { "../deps/luajit/lib" }
+-- links { "lua51" }
 
 configuration "windows"
     defines {
@@ -20,8 +19,9 @@ configuration "windows"
     links { "winmm" }
 
 configuration "linux"
+    includedirs { "/usr/include/lua5.1" }
     defines { "LUA_USE_LINUX" }
-    links { "dl" }
+    links { "dl", "lua5.1" }
 
 configuration "Debug"
     defines { "LUA_USE_APICHECK" }

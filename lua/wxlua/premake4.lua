@@ -7,15 +7,20 @@ project "wxlua"
     files { "*", "debug/*", "debugger/*" }
     includedirs {
         "../wxbind/setup",
-        "../../deps/luajit/include",
+--        "../../deps/luajit/include",
         "..",
         "."
     }
     libdirs { "../../deps/luajit/lib" }
-    links { "lua51" }
 
-    configuration "Debug"   targetdir "../../lib/Debug"
-    configuration "Release" targetdir "../../lib/Release"
+    configuration "Debug"   targetdir "../../build/lib/Debug"
+    configuration "Release" targetdir "../../build/lib/Release"
+
+    configuration "linux"
+        includedirs { "/usr/include/lua5.1" }
+--        defines { "LUA_USE_LINUX", "LUA_COMPAT_MODULE" }
+        defines { "LUA_USE_LINUX" }
+        links { "dl", "lua5.1" }
 
     -- --------------------------------------------------------------------
     -- Platform-specific

@@ -75,11 +75,11 @@ configuration "windows"
 elseif os.is("linux") then
 
 configuration { "linux", "Debug" }
-    linkoptions(string.format("`%s --debug --unicode --static --libs`",
+    linkoptions(string.format("`%s --debug --unicode --libs all`",
                                 _OPTIONS["wx-config-debug"]))
 
 configuration { "linux", "Release" }
-    linkoptions(string.format("`%s --release --unicode --static --libs`",
+    linkoptions(string.format("`%s --unicode --libs all`",
                                 _OPTIONS["wx-config-release"]))
 
 elseif os.is("macosx") then
