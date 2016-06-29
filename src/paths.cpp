@@ -184,11 +184,11 @@ const wxArrayString & GetLuaCPathList()
         cpathList.push_back(scripts + sep() + _T("libs") + sep() + _T("?") + LUA_DLL_EXT);
         cpathList.push_back(scripts + sep() + _T("libs") + sep() + _T("?51") + LUA_DLL_EXT);
 #ifdef __WXMAC__
-		wxString frameworks = wxPathOnly(exedir()) + sep() + _T("Frameworks");
+        wxString frameworks = wxPathOnly(exedir()) + sep() + _T("Frameworks");
         cpathList.push_back(frameworks + sep() + _T("?") + LUA_DLL_EXT);
         cpathList.push_back(frameworks + sep() + _T("?51") + LUA_DLL_EXT);
 
-		// lib variants
+        // lib variants
         cpathList.push_back(plugins + sep() + _T("lib?") + LUA_DLL_EXT);
         cpathList.push_back(plugins + sep() + _T("lib?51") + LUA_DLL_EXT);
         cpathList.push_back(scripts + sep() + _T("libs") + sep() + _T("lib?") + LUA_DLL_EXT);

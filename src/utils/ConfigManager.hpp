@@ -323,7 +323,7 @@ class ConfigValue
     {
         Callback(OBJ * obj, FUNC func) : m_obj(obj), m_func(func) {}
         inline virtual void Call(T val) { (m_obj->*m_func)(val); }
-		OBJ * m_obj;
+        OBJ * m_obj;
         FUNC m_func;
     };
 

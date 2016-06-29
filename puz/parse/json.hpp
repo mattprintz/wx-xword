@@ -70,7 +70,7 @@ public:
     explicit BaseError(const std::string & msg)
         : message(msg)
     {}
-	virtual ~BaseError() throw() {}
+    virtual ~BaseError() throw() {}
     std::string message;
     virtual const char * what() const throw() { return message.c_str(); }
 };
@@ -275,7 +275,7 @@ protected:
         return it;
     }
 
-	container_t m_container;
+    container_t m_container;
 };
 
 

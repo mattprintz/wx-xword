@@ -21,11 +21,11 @@ elseif os.is("linux") then
 
 configuration { "linux", "Debug" }
     buildoptions(string.format("`%s --debug --unicode --cxxflags all`",
-    							_OPTIONS["wx-config-debug"]))
+                                _OPTIONS["wx-config-debug"]))
 
 configuration { "linux", "Release" }
     buildoptions(string.format("`%s --unicode --cxxflags all`",
-    							_OPTIONS["wx-config-release"]))
+                                _OPTIONS["wx-config-release"]))
 
 elseif os.is("macosx") then
 

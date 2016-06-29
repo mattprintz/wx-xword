@@ -1,12 +1,12 @@
 if not dofile 'premake_config.lua' then
-	return
+    return
 end
 
 if _ACTION == "clean" then
     os.rmdir("build")
     return
 elseif not _ACTION then
-	return
+    return
 end
 
 solution "XWord"
@@ -30,7 +30,7 @@ solution "XWord"
         flags { "Optimize" }
         libdirs { "build/bin/Release", "build/lib/Release" }
     configuration { "macoxs", "Release" }
-    	linkoptions "-S" -- Strip debug symbols
+        linkoptions "-S" -- Strip debug symbols
 
     configuration "Debug"
         defines { "DEBUG", "_DEBUG" }
@@ -83,7 +83,7 @@ if os.is("macosx") then
     end
     
     for _, p in pairs(solution().projects) do
-    	-- Put shared libs in XWord.app/Contents/Frameworks
+        -- Put shared libs in XWord.app/Contents/Frameworks
         if get_key(p, "kind") == "SharedLib" then
             project(p.name)
                 -- Set the output to the app bundle

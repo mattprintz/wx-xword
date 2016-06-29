@@ -20,15 +20,15 @@
 // fill an array of this this with {"NAME",value} and terminate it with {NULL,0}
 // and pass it to L_openconst
 struct L_const{
-	char* name;
-	unsigned int value;
+    char* name;
+    unsigned int value;
 };
 // fill an array of this this with {"NAME",value} and 
 // terminate it with {NULL,NULL}
 // and pass it to L_openconst_with_type
 struct L_Tuserdata{
-	char* name;
-	void* data;
+    char* name;
+    void* data;
 };
 
 // a more flexibla luaL_error

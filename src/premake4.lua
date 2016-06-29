@@ -60,7 +60,7 @@ project "XWord"
         configuration {}
             defines {
                 "XWORD_USE_LUA",
-            	"LUAPUZ_API=\"\""
+                "LUAPUZ_API=\"\""
             }
     
             includedirs {

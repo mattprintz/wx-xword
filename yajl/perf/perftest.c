@@ -35,12 +35,12 @@ static double mygettime(void) {
 #include <windows.h>
 static double mygettime(void) {
     long long tval;
-	FILETIME ft;
-	GetSystemTimeAsFileTime(&ft);
-	tval = ft.dwHighDateTime;
-	tval <<=32;
-	tval |= ft.dwLowDateTime;
-	return tval / 10000000.00;
+    FILETIME ft;
+    GetSystemTimeAsFileTime(&ft);
+    tval = ft.dwHighDateTime;
+    tval <<=32;
+    tval |= ft.dwLowDateTime;
+    return tval / 10000000.00;
 }
 #endif
 
@@ -56,7 +56,7 @@ run(int validate_utf8)
 
     /* allocate a parser */
     for (;;) {
-		int i;
+        int i;
         {
             double now = mygettime();
             if (now - starttime >= PARSE_TIME_SECS) break;

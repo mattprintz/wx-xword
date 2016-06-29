@@ -1086,11 +1086,11 @@ void
 MyFrame::CreateWindows()
 {
     m_XGridCtrl = new XGridCtrl(this);
-	// Windows uses the frame and all child windows as the drop target.
-	// Mac seems to do this on a window-by-window basis, so we should at least
-	// let the user drop a puzzle onto the grid
+    // Windows uses the frame and all child windows as the drop target.
+    // Mac seems to do this on a window-by-window basis, so we should at least
+    // let the user drop a puzzle onto the grid
 #ifndef __WXMSW__
-	m_XGridCtrl->SetDropTarget(new XWordFileDropTarget(this));
+    m_XGridCtrl->SetDropTarget(new XWordFileDropTarget(this));
 #endif
 
     m_cluePrompt = new CluePrompt(this, wxID_ANY);
@@ -2046,7 +2046,7 @@ MyFrame::OnEraseGrid(wxCommandEvent & WXUNUSED(evt))
     m_XGridCtrl->Refresh();
     SetTime(0);
     // Send puzzle updated event
-	wxPuzEvent evt(wxEVT_PUZ_LETTER, GetId());
+    wxPuzEvent evt(wxEVT_PUZ_LETTER, GetId());
     evt.SetSquare(m_XGridCtrl->GetFocusedSquare());
     GetEventHandler()->ProcessEvent(evt);
 }

@@ -102,7 +102,7 @@ private:
 /// Normally stdout/stdin/stderr goes nowhere in a MSW GUI app and this corrects that.
 /// This function does nothing when called from any other OS.
 void WXDLLIMPEXP_WXLUA wxlua_RedirectIOToDosConsole(bool alloc_new_if_needed,
-													short max_console_lines = 500);
+                                                    short max_console_lines = 500);
 
 
 #endif // WX_LUA_CONSOLE_H

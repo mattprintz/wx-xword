@@ -19,8 +19,8 @@
 
 
 #if !defined(lua_pushliteral)
-#define lua_pushliteral(L, s)	\
-	lua_pushstring(L, "" s, (sizeof(s)/sizeof(char))-1)
+#define lua_pushliteral(L, s)    \
+    lua_pushstring(L, "" s, (sizeof(s)/sizeof(char))-1)
 #endif
 
 
@@ -547,15 +547,15 @@ static const struct luaL_Reg lxp_funcs[] = {
 ** Assumes the table is on top of the stack.
 */
 static void set_info (lua_State *L) {
-	lua_pushliteral (L, "_COPYRIGHT");
-	lua_pushliteral (L, "Copyright (C) 2003-2012 Kepler Project");
-	lua_settable (L, -3);
-	lua_pushliteral (L, "_DESCRIPTION");
-	lua_pushliteral (L, "LuaExpat is a SAX XML parser based on the Expat library");
-	lua_settable (L, -3);
-	lua_pushliteral (L, "_VERSION");
-	lua_pushliteral (L, "LuaExpat 1.3.0");
-	lua_settable (L, -3);
+    lua_pushliteral (L, "_COPYRIGHT");
+    lua_pushliteral (L, "Copyright (C) 2003-2012 Kepler Project");
+    lua_settable (L, -3);
+    lua_pushliteral (L, "_DESCRIPTION");
+    lua_pushliteral (L, "LuaExpat is a SAX XML parser based on the Expat library");
+    lua_settable (L, -3);
+    lua_pushliteral (L, "_VERSION");
+    lua_pushliteral (L, "LuaExpat 1.3.0");
+    lua_settable (L, -3);
 }
 
 
@@ -579,17 +579,17 @@ static void luaL_setfuncs (lua_State *L, const luaL_Reg *l, int nup) {
 
 
 int luaopen_lxp (lua_State *L) {
-	luaL_newmetatable(L, ParserType);
+    luaL_newmetatable(L, ParserType);
 
-	lua_pushliteral(L, "__index");
-	lua_pushvalue(L, -2);
-	lua_rawset(L, -3);
+    lua_pushliteral(L, "__index");
+    lua_pushvalue(L, -2);
+    lua_rawset(L, -3);
 
-	luaL_setfuncs (L, lxp_meths, 0);
-	lua_pop (L, 1); /* remove metatable */
+    luaL_setfuncs (L, lxp_meths, 0);
+    lua_pop (L, 1); /* remove metatable */
 
-	lua_newtable (L);
-	luaL_setfuncs (L, lxp_funcs, 0);
-	set_info (L);
-	return 1;
+    lua_newtable (L);
+    luaL_setfuncs (L, lxp_funcs, 0);
+    set_info (L);
+    return 1;
 }

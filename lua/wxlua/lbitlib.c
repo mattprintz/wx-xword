@@ -51,7 +51,7 @@
 
 /* On a Microsoft compiler on a Pentium, use assembler to avoid clashes
    with a DirectX idiosyncrasy */
-#if defined(LUA_WIN) && defined(_MSC_VER) && defined(_M_IX86)	/* { */
+#if defined(LUA_WIN) && defined(_MSC_VER) && defined(_M_IX86)    /* { */
 
 #define MS_ASMTRICK
 
@@ -182,18 +182,18 @@ static lua_Unsigned luaL_checkunsigned (lua_State *L, int arg) {
 
 /* number of bits to consider in a number */
 #if !defined(LUA_NBITS)
-#define LUA_NBITS	32
+#define LUA_NBITS    32
 #endif
 
 
-#define ALLONES		(~(((~(lua_Unsigned)0) << (LUA_NBITS - 1)) << 1))
+#define ALLONES        (~(((~(lua_Unsigned)0) << (LUA_NBITS - 1)) << 1))
 
 /* macro to trim extra bits */
-#define trim(x)		((x) & ALLONES)
+#define trim(x)        ((x) & ALLONES)
 
 
 /* builds a number with 'n' ones (1 <= n <= LUA_NBITS) */
-#define mask(n)		(~((ALLONES << 1) << ((n) - 1)))
+#define mask(n)        (~((ALLONES << 1) << ((n) - 1)))
 
 
 typedef lua_Unsigned b_uint;

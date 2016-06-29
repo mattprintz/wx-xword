@@ -167,7 +167,7 @@ function stringx.split(self,re,n)
     if re and re ~= '' and find(s,re,-#re,true) then
         res[#res+1] = ""
     end
-	return setmetatable(res,list_MT)
+    return setmetatable(res,list_MT)
 end
 
 local function tab_expand (self,n)

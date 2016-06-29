@@ -984,8 +984,8 @@ XGridCtrl::EndSelection(bool success)
         m_selectionStart = NULL;
         m_selectionEnd   = NULL;
     }
-	GridSelectionEvent evt(GetId(), wxEVT_Grid_SELECTION, this,
-						   m_selectionStart, m_selectionEnd);
+    GridSelectionEvent evt(GetId(), wxEVT_Grid_SELECTION, this,
+                           m_selectionStart, m_selectionEnd);
     GetEventHandler()->ProcessEvent(evt);
 
     Disconnect(wxEVT_Grid_SELECTION);

@@ -216,7 +216,7 @@ local function file_op (is_copy,src,dest,flag)
             if path.isdir(dest) then
                 dest = path.join(dest,path.basename(src))
             end
-			local ret
+            local ret
             if is_copy then ret = CopyFile(src,dest,flag)
             else ret = MoveFile(src,dest) end
             if ret == 0 then
@@ -449,11 +449,11 @@ function dir.dirtree( d )
 end
 
 
----	Recursively returns all the file starting at <i>path</i>. It can optionally take a shell pattern and
---	only returns files that match <i>pattern</i>. If a pattern is given it will do a case insensitive search.
---	@param start_path {string} A directory. If not given, all files in current directory are returned.
---	@param pattern {string} A shell pattern. If not given, all files are returned.
---	@return Table containing all the files found recursively starting at <i>path</i> and filtered by <i>pattern</i>.
+---    Recursively returns all the file starting at <i>path</i>. It can optionally take a shell pattern and
+--    only returns files that match <i>pattern</i>. If a pattern is given it will do a case insensitive search.
+--    @param start_path {string} A directory. If not given, all files in current directory are returned.
+--    @param pattern {string} A shell pattern. If not given, all files are returned.
+--    @return Table containing all the files found recursively starting at <i>path</i> and filtered by <i>pattern</i>.
 --  @raise start_path must be a string
 function dir.getallfiles( start_path, pattern )
     assert_dir(1,start_path)

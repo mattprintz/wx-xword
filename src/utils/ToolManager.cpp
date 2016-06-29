@@ -334,8 +334,8 @@ ToolManager::Add(wxMenu * menu, int id, int iconSize)
                                        tool->GetHelpString(),
                                        tool->GetKind());
 
-	// Bitmaps on menus really screw up windows menus, and they
-	// look a bit tacky on Mac too
+    // Bitmaps on menus really screw up windows menus, and they
+    // look a bit tacky on Mac too
     // Only set a bitmap for normal items
 #if 0
     if (tool->GetKind() == wxITEM_NORMAL && tool->HasIcon())

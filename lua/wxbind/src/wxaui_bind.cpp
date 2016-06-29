@@ -5747,7 +5747,7 @@ static int LUACALL wxLua_wxAuiNotebook_SetFont(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiNotebook_SetMeasuringFont[] = { &wxluatype_wxAuiNotebook, &wxluatype_wxFont, NULL };
 static int LUACALL wxLua_wxAuiNotebook_SetMeasuringFont(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiNotebook_SetMeasuringFont[1] = {{ wxLua_wxAuiNotebook_SetMeasuringFont, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAuiNotebook_SetMeasuringFont }};
-// 	void SetMeasuringFont(const wxFont& font);
+//     void SetMeasuringFont(const wxFont& font);
 static int LUACALL wxLua_wxAuiNotebook_SetMeasuringFont(lua_State *L)
 {
     // const wxFont font
@@ -5763,7 +5763,7 @@ static int LUACALL wxLua_wxAuiNotebook_SetMeasuringFont(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiNotebook_SetNormalFont[] = { &wxluatype_wxAuiNotebook, &wxluatype_wxFont, NULL };
 static int LUACALL wxLua_wxAuiNotebook_SetNormalFont(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiNotebook_SetNormalFont[1] = {{ wxLua_wxAuiNotebook_SetNormalFont, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAuiNotebook_SetNormalFont }};
-// 	void SetNormalFont(const wxFont& font);
+//     void SetNormalFont(const wxFont& font);
 static int LUACALL wxLua_wxAuiNotebook_SetNormalFont(lua_State *L)
 {
     // const wxFont font
@@ -5849,7 +5849,7 @@ static int LUACALL wxLua_wxAuiNotebook_SetPageToolTip(lua_State *L)
 static wxLuaArgType s_wxluatypeArray_wxLua_wxAuiNotebook_SetSelectedFont[] = { &wxluatype_wxAuiNotebook, &wxluatype_wxFont, NULL };
 static int LUACALL wxLua_wxAuiNotebook_SetSelectedFont(lua_State *L);
 static wxLuaBindCFunc s_wxluafunc_wxLua_wxAuiNotebook_SetSelectedFont[1] = {{ wxLua_wxAuiNotebook_SetSelectedFont, WXLUAMETHOD_METHOD, 2, 2, s_wxluatypeArray_wxLua_wxAuiNotebook_SetSelectedFont }};
-// 	void SetSelectedFont(const wxFont& font);
+//     void SetSelectedFont(const wxFont& font);
 static int LUACALL wxLua_wxAuiNotebook_SetSelectedFont(lua_State *L)
 {
     // const wxFont font

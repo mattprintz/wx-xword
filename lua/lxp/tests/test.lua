@@ -3,10 +3,10 @@
 -- $Id: test.lua,v 1.6 2006/06/08 20:34:52 tomas Exp $
 
 if string.find(_VERSION, " 5.0") then
-	lxp = assert(loadlib("./lxp.so", "luaopen_lxp"))()
+    lxp = assert(loadlib("./lxp.so", "luaopen_lxp"))()
 else
-	lxp = require"lxp"
-	gcinfo = function () return collectgarbage"count" end
+    lxp = require"lxp"
+    gcinfo = function () return collectgarbage"count" end
 end
 print (lxp._VERSION)
 assert(lxp.new, "Cannot find function lxp.new ("..tostring(lxp.new)..")")
@@ -43,40 +43,40 @@ preamble = [[
 
 X = {}
 if string.find(_VERSION, " 5.0") then
-	function getargs (...) X = arg end
-	function xgetargs (c)
-	  return function (...)
-	    table.insert(arg, 1, c)
-	    table.insert(X, arg)
-	  end
-	end
+    function getargs (...) X = arg end
+    function xgetargs (c)
+      return function (...)
+        table.insert(arg, 1, c)
+        table.insert(X, arg)
+      end
+    end
 else
-	(loadstring or load)[[
-	function getargs (...)
-		X = { ... }
-		X.n = select('#', ...)
-	end
-	function xgetargs (c)
-	  return function (...)
-	    local arg = { ... }
-	    arg.n = select('#', ...) + 1
-	    table.insert(arg, 1, c)
-	    table.insert(X, arg)
-	  end
-	end
-	table.getn = function (t)
-		if t.n then
-			return t.n
-		else
-			local n = 0
-			for i in pairs(t) do
-				if type(i) == "number" then
-					n = math.max(n, i)
-				end
-			end
-			return n
-		end
-	end]]()
+    (loadstring or load)[[
+    function getargs (...)
+        X = { ... }
+        X.n = select('#', ...)
+    end
+    function xgetargs (c)
+      return function (...)
+        local arg = { ... }
+        arg.n = select('#', ...) + 1
+        table.insert(arg, 1, c)
+        table.insert(X, arg)
+      end
+    end
+    table.getn = function (t)
+        if t.n then
+            return t.n
+        else
+            local n = 0
+            for i in pairs(t) do
+                if type(i) == "number" then
+                    n = math.max(n, i)
+                end
+            end
+            return n
+        end
+    end]]()
 end
 
 
@@ -330,14 +330,14 @@ assert(not status and string.find(err, "error closing parser"))
 print("testing parser:stop()");
 local stopped;
 p = lxp.new{
-	StartElement = function (parser, name, attr)
-		if name == "stop" then
-			parser:stop()
-			stopped = true
-		else
-			stopped = false
-		end
-	end
+    StartElement = function (parser, name, attr)
+        if name == "stop" then
+            parser:stop()
+            stopped = true
+        else
+            stopped = false
+        end
+    end
 }
 local ok, err = p:parse[[<root><parseme>Hello</parseme><stop>here</stop><notparsed/></root>]];
 assert(not ok)

@@ -55,7 +55,7 @@ long ( *LRT_DOFILE_OVERRIDE)( lua_State *L, const char *filename) = NULL;
 typedef struct S_TASK_ENTRY {
     QUEUE       queue;
     char        *fname;
-    long		flon;
+    long        flon;
     lua_State   *L;
     OS_THREAD_T th;
     long        running;
@@ -182,8 +182,8 @@ static long int_taskcreate( const char *fname, long flon, lua_State *TL) {
             OsUnlockMutex( tlMutex);
             return( -2);
         } else {
-        	memcpy( aTask[i]->fname, fname, flon );
-        	aTask[i]->flon = flon;
+            memcpy( aTask[i]->fname, fname, flon );
+            aTask[i]->flon = flon;
             if( QueCreate( &( aTask[i]->queue), QUE_NO_LIMIT)) {
                 free( aTask[i]->fname);
                 OsUnlockMutex( tlMutex);
@@ -195,7 +195,7 @@ static long int_taskcreate( const char *fname, long flon, lua_State *TL) {
 
         aTask[i]->L = TL;
 
-		if( OsCreateThread( &( aTask[i]->th), taskthread, ( void *) ( aTask[i] ))) {
+        if( OsCreateThread( &( aTask[i]->th), taskthread, ( void *) ( aTask[i] ))) {
             free( aTask[i]->fname);
             QueDestroy( &( aTask[i]->queue));
             OsUnlockMutex( tlMutex);
@@ -411,10 +411,10 @@ static int reg_tasklist(lua_State *L) {
             lua_pushnumber( L, i + 1);
             lua_newtable( L);
             lua_pushstring( L, "script");
-			if( aTask[i]->fname[0] == '=' )
-				lua_pushstring( L, "STRING_TASK");
-			else
-				lua_pushlstring( L, aTask[i]->fname, aTask[i]->flon);
+            if( aTask[i]->fname[0] == '=' )
+                lua_pushstring( L, "STRING_TASK");
+            else
+                lua_pushlstring( L, aTask[i]->fname, aTask[i]->flon);
             lua_settable( L, -3);
             lua_pushstring( L, "msgcount");
             lua_pushnumber( L, aTask[i]->queue.msgcount);
@@ -567,7 +567,7 @@ static const struct luaL_reg lt_lib[] = {
 };
 
 LUATASK_API int luaopen_task(lua_State *L) {
-	int_tasklibinit(L);
+    int_tasklibinit(L);
     luaL_openlib (L, LT_NAMESPACE, lt_lib, 0);
     lua_pop (L, 1);
     return 0;
@@ -575,13 +575,13 @@ LUATASK_API int luaopen_task(lua_State *L) {
 
 static OS_THREAD_FUNC taskthread( void *vp) {
     TASK_ENTRY *te;
-	int status = 0;
+    int status = 0;
 #if (_MSC_VER >= 1400)
-	size_t l_init;
-	char *init;
-	_dupenv_s(&init,&l_init,"LUA_INIT");
+    size_t l_init;
+    char *init;
+    _dupenv_s(&init,&l_init,"LUA_INIT");
 #else
-	const char *init = getenv("LUA_INIT");
+    const char *init = getenv("LUA_INIT");
 #endif
 
     OsLockMutex( tlMutex, INFINITE);
@@ -594,8 +594,8 @@ static OS_THREAD_FUNC taskthread( void *vp) {
     pthread_cleanup_push( taskCleanup, te);
 #endif
 
-	lua_gc(te->L, LUA_GCSTOP, 0);  /* stop collector during initialization */
-	luaL_openlibs(te->L);  /* open libraries */
+    lua_gc(te->L, LUA_GCSTOP, 0);  /* stop collector during initialization */
+    luaL_openlibs(te->L);  /* open libraries */
     luaopen_task(te->L);
     /* Call TASK_INIT, set in reg_taskcreate */
     lua_getglobal(te->L, "TASK_INIT");
@@ -605,32 +605,32 @@ static OS_THREAD_FUNC taskthread( void *vp) {
     }
     lua_pop(te->L, 1);
     /* Restart the garbage collector */
-	lua_gc(te->L, LUA_GCRESTART, 0);
+    lua_gc(te->L, LUA_GCRESTART, 0);
     if( LRT_LIB_OVERRIDE != NULL)
         LRT_LIB_OVERRIDE( te->L);
 
     OsUnlockMutex( tlMutex);
 
-	if (init != NULL) {
-		if (init[0] == '@')
-			status = dofile( te->L, init+1);
-		else
-			status = dostring( te->L, init, strlen( init), "=LUA_INIT");
+    if (init != NULL) {
+        if (init[0] == '@')
+            status = dofile( te->L, init+1);
+        else
+            status = dostring( te->L, init, strlen( init), "=LUA_INIT");
 #if (_MSC_VER >= 1400)
-		free(init);
+        free(init);
 #endif
-	}
+    }
 
-	if (status == 0) {
-		if( te->fname[0] == '=' )
-			dostring( te->L, te->fname + 1, te->flon - 1, "=STRING_TASK");
-		else {
-			if( LRT_DOFILE_OVERRIDE != NULL)
-				LRT_DOFILE_OVERRIDE( te->L, te->fname);
-			else
-				dofile( te->L, te->fname);
-		}
-	}
+    if (status == 0) {
+        if( te->fname[0] == '=' )
+            dostring( te->L, te->fname + 1, te->flon - 1, "=STRING_TASK");
+        else {
+            if( LRT_DOFILE_OVERRIDE != NULL)
+                LRT_DOFILE_OVERRIDE( te->L, te->fname);
+            else
+                dofile( te->L, te->fname);
+        }
+    }
     
     OsLockMutex( tlMutex, INFINITE);
     

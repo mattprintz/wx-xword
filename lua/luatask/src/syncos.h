@@ -11,10 +11,10 @@
 
 #ifdef NATV_WIN32
     #define OS_THREAD_FUNC    unsigned __stdcall
-	#define	OS_THREAD_T 	  long
+    #define    OS_THREAD_T       long
 #else
     #define OS_THREAD_FUNC    void *
-	#define	OS_THREAD_T		  pthread_t
+    #define    OS_THREAD_T          pthread_t
 #endif
 
 #ifdef NATV_WIN32

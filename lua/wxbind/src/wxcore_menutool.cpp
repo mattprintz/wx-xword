@@ -4477,7 +4477,7 @@ static int LUACALL wxLua_wxAcceleratorTable_constructor(lua_State *L)
 
         if (returns != NULL)
         {
-		    wxluaO_addgcobject(L, returns, wxluatype_wxAcceleratorTable);
+            wxluaO_addgcobject(L, returns, wxluatype_wxAcceleratorTable);
             // push the constructed class pointer
             wxluaT_pushuserdatatype(L, returns, wxluatype_wxAcceleratorTable);
             // return the number of parameters

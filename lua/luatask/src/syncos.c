@@ -54,16 +54,16 @@ long OsCreateThread( OS_THREAD_T *th, OS_THREAD threadfunc, void *param) {
 
     return( th == NULL ? -1 : 0);
 #else
-	pthread_attr_t  attr;
+    pthread_attr_t  attr;
     int             status;
 
-	pthread_attr_init( &attr);
-	pthread_attr_setdetachstate( &attr, PTHREAD_CREATE_DETACHED);
+    pthread_attr_init( &attr);
+    pthread_attr_setdetachstate( &attr, PTHREAD_CREATE_DETACHED);
 #ifdef LUATASK_PTHREAD_STACK_SIZE
     pthread_attr_setstacksize( &attr, LUATASK_PTHREAD_STACK_SIZE );
 #endif
     status = pthread_create( th, &attr, threadfunc, param);
-	pthread_attr_destroy( &attr);
+    pthread_attr_destroy( &attr);
 
     return( status);
 #endif
@@ -72,7 +72,7 @@ long OsCreateThread( OS_THREAD_T *th, OS_THREAD threadfunc, void *param) {
 long OsCancelThread( OS_THREAD_T th) {
 #ifdef NATV_WIN32
     /* Not supported */
-	return( -1);
+    return( -1);
 #else
     return( pthread_cancel( th));
 #endif

@@ -432,7 +432,7 @@ end
 -- @param fun a function of n arguments
 -- @param ... n tables
 -- @usage mapn(function(x,y,z) return x+y+z end, {1,2,3},{10,20,30},{100,200,300}) is {111,222,333}
--- @usage mapn(math.max, {1,20,300},{10,2,3},{100,200,100}) is	{100,200,300}
+-- @usage mapn(math.max, {1,20,300},{10,2,3},{100,200,100}) is    {100,200,300}
 -- @param fun A function that takes as many arguments as there are tables
 function tablex.mapn(fun,...)
     fun = function_arg(1,fun)

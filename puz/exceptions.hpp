@@ -42,7 +42,7 @@ public:
         : message(a_message)
     {}
 
-	virtual ~Exception() throw() {}
+    virtual ~Exception() throw() {}
 
     std::string message;
 

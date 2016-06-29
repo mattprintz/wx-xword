@@ -43,8 +43,8 @@ project "luapuz"
         }
         links { "dl", "lua5.1" }
 
-	configuration "macosx"
-    	defines {
-    		[[PUZ_API=\"\"]],
+    configuration "macosx"
+        defines {
+            [[PUZ_API=\"\"]],
             [[LUAPUZ_API=\"\"]]
-    	}
+        }

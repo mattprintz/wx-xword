@@ -118,16 +118,16 @@ local function index (numkey,key)
 end
 
 
----	Create a string representation of a Lua table.
+---    Create a string representation of a Lua table.
 --  This function never fails, but may complain by returning an
 --  extra value. Normally puts out one item per line, using
 --  the provided indent; set the second parameter to '' if
 --  you want output on one line.
---	@param tbl {table} Table to serialize to a string.
---	@param space {string} (optional) The indent to use.
---	Defaults to two spaces; make it the empty string for no indentation
---	@param not_clever {bool} (optional) Use for plain output, e.g {['key']=1}.
---	Defaults to false.
+--    @param tbl {table} Table to serialize to a string.
+--    @param space {string} (optional) The indent to use.
+--    Defaults to two spaces; make it the empty string for no indentation
+--    @param not_clever {bool} (optional) Use for plain output, e.g {['key']=1}.
+--    Defaults to false.
 --  @return a string
 --  @return a possible error message
 function pretty.write (tbl,space,not_clever)
@@ -227,10 +227,10 @@ function pretty.write (tbl,space,not_clever)
     return concat(lines,#space > 0 and '\n' or '')
 end
 
----	Dump a Lua table out to a file or stdout.
---	@param t {table} The table to write to a file or stdout.
---	@param ... {string} (optional) File name to write too. Defaults to writing
---	to stdout.
+---    Dump a Lua table out to a file or stdout.
+--    @param t {table} The table to write to a file or stdout.
+--    @param ... {string} (optional) File name to write too. Defaults to writing
+--    to stdout.
 function pretty.dump (t,...)
     if select('#',...)==0 then
         print(pretty.write(t))

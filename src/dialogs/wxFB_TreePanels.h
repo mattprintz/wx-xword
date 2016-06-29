@@ -28,19 +28,19 @@
 ///////////////////////////////////////////////////////////////////////////////
 class wxFB_GridTweaks : public wxPanel 
 {
-	private:
-	
-	protected:
-		wxStaticLine* m_staticline1;
-	
-	public:
-		wxSpinCtrl* m_lineThickness;
-		wxSpinCtrl* m_letterScale;
-		wxSpinCtrl* m_numberScale;
-		
-		wxFB_GridTweaks( wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxTAB_TRAVERSAL ); 
-		~wxFB_GridTweaks();
-	
+    private:
+    
+    protected:
+        wxStaticLine* m_staticline1;
+    
+    public:
+        wxSpinCtrl* m_lineThickness;
+        wxSpinCtrl* m_letterScale;
+        wxSpinCtrl* m_numberScale;
+        
+        wxFB_GridTweaks( wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxTAB_TRAVERSAL ); 
+        ~wxFB_GridTweaks();
+    
 };
 
 #endif //__WXFB_TREEPANELS_H__
